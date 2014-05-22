@@ -1,4 +1,6 @@
-# Chef Solo Recipes for AWS EC2
+# chef-repo
+
+Chef Solo Recipes for AWS EC2 Linux AMI
 
 ## prepare
 
