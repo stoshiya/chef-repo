@@ -7,9 +7,21 @@
 # All rights reserved - Do Not Redistribute
 #
 
+remote_file "/tmp/remi-release-6.rpm" do
+  source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpm"
+end
+
+script "rpm" do
+  interpreter "bash"
+  user "root"
+  code <<-EOL
+    rpm -Uvh --force /tmp/remi-release-6.rpm
+  EOL
+end
+
 package "redis" do
   action :install
-  options "--enablerepo=epel"
+  options "--enablerepo=remi"
 end
 
 service "redis" do
@@ -25,4 +37,3 @@ template "redis.conf" do
   mode 0644
   notifies :restart, 'service[redis]'
 end
-
