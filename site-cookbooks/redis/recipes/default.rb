@@ -13,7 +13,16 @@ package "redis" do
 end
 
 service "redis" do
-  supports :status => true, :restart => true, :reload => true
+  supports :status => true, :restart => true
   action [ :enable, :start ]
+end
+
+template "redis.conf" do
+  path "/etc/redis.conf"
+  source "redis.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :restart, 'service[redis]'
 end
 
