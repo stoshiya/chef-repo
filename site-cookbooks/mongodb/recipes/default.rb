@@ -26,3 +26,12 @@ service "mongod" do
   action [ :enable, :start ]
 end
 
+template "mongod.conf" do
+  path "/etc/mongod.conf"
+  source "mongod.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :reload, 'service[mongod]'
+end
+
