@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-version = "v0.10.28"
+version = "#{node[:nodejs][:version]}"
 
 remote_file "/tmp/node.tar.gz" do
   source "http://nodejs.org/dist/#{version}/node-#{version}-linux-x64.tar.gz"
