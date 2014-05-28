@@ -7,15 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 
-remote_file "/tmp/remi-release-6.rpm" do
-  source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpm"
-end
-
 script "rpm" do
   interpreter "bash"
   user "root"
   code <<-EOL
-    rpm -Uvh --force /tmp/remi-release-6.rpm
+    rpm -Uvh --force http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
   EOL
 end
 
