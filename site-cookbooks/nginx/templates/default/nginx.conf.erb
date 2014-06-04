@@ -45,6 +45,7 @@ http {
     upstream apps {
         least_conn;
         server 127.0.0.1:3000;
+        keepalive 1000;
     }
 
     server {
