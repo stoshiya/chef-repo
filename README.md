@@ -1,6 +1,16 @@
 # chef-repo
 
-Chef Solo Recipes for AWS EC2 Linux AMI
+Chef Solo Recipes for AWS EC2 Linux AMI. 
+
+
+## recipes
+
+ - mongodb
+ - nginx
+ - node.js
+ - redis
+ - td-agent
+
 
 ## prepare
 
@@ -14,7 +24,7 @@ $ knife configure
 ## run
 
 ```
-$ git clone git@github.com:stoshiya/chef-repo.git
+$ git clone https://github.com/stoshiya/chef-repo.git
 $ cd chef-repo
 $ sudo /usr/local/bin/chef-solo -c solo.rb -j COOKBOOK.json
 ```
