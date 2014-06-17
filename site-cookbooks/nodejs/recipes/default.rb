@@ -9,7 +9,7 @@
 
 version = "#{node[:nodejs][:version]}"
 
-remote_file "/tmp/node.tar.gz" do
+remote_file "/tmp/node-#{version}-linux-x64.tar.gz" do
   source "http://nodejs.org/dist/#{version}/node-#{version}-linux-x64.tar.gz"
 end
 
@@ -17,7 +17,7 @@ script "extract" do
   interpreter "bash"
   user "root"
   code <<-EOL
-    tar zxvf /tmp/node.tar.gz -C /usr/local/
+    tar zxvf /tmp/node-#{version}-linux-x64.tar.gz -C /usr/local/
   EOL
 end
 
