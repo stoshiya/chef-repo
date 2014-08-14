@@ -1,6 +1,6 @@
 {
   "nodejs" : {
-    "version" : "v0.10.29"
+    "version" : "v0.10.30"
   },
   "run_list" : [
     "recipe[nodejs]"
