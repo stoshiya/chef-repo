@@ -10,6 +10,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
  - node.js
  - redis
  - td-agent
+ - elasticsearch
 
 
 ## prepare
