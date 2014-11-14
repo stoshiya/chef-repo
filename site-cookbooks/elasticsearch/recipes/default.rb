@@ -41,8 +41,8 @@ script "install plugins" do
     /usr/share/elasticsearch/bin/plugin -remove $i
     done
 
-    /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/2.3.0
-    /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.3.0
+    /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/2.4.0
+    /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.4.1
     /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
     /usr/share/elasticsearch/bin/plugin -install royrusso/elasticsearch-HQ
     /usr/share/elasticsearch/bin/plugin -install lukas-vlcek/bigdesk
