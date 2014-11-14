@@ -36,6 +36,11 @@ script "install plugins" do
   interpreter "bash"
   user "root"
   code <<-EOL
+    for i in `/usr/share/elasticsearch/bin/plugin -l | grep '^    - ' | sed -e 's/^    -//'`
+    do
+    /usr/share/elasticsearch/bin/plugin -remove $i
+    done
+
     /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/2.3.0
     /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.3.0
     /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
