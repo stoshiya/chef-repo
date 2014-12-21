@@ -1,6 +1,6 @@
 {
   "nodejs" : {
-    "version" : "v0.10.33"
+    "version" : "v0.10.34"
   },
   "run_list" : [
     "recipe[yum]",
