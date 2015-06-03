@@ -7,6 +7,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
 
  - mongodb
  - nginx
+ - nodebrew
  - node.js
  - redis
  - td-agent
