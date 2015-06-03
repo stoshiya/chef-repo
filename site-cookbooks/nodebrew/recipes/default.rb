@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+remote_file "/tmp/nodebrew" do
+  source "http://git.io/nodebrew"
+end
+
 execute "setup" do
   user "ec2-user"
   group "ec2-user"
