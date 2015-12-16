@@ -1,0 +1,9 @@
+{
+  "golang" : {
+    "version" : "1.5.2"
+  },
+  "run_list" : [
+    "recipe[yum]",
+    "recipe[gobrew]"
+  ]
+}

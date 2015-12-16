@@ -5,13 +5,14 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
 
 ## recipes
 
+ - elasticsearch
+ - gobrew
  - mongodb
  - nginx
  - nodebrew
  - node.js
  - redis
  - td-agent
- - elasticsearch
  - yum
 
 ## prepare
