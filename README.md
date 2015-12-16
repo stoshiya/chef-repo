@@ -18,7 +18,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
 
 ```
 $ sudo yum update -y
-$ sudo yum install -y ruby-gem ruby-devel gcc git
+$ sudo yum install -y ruby-devel gcc git
 $ sudo gem install knife-solo --no-ri --no-rdoc
 $ knife configure
 ```
