@@ -19,13 +19,13 @@ package "elasticsearch" do
   action :install
 end
 
-template "elasticsearch.yaml" do
-  path "/etc/elasticsearch/elasticsearch.yml"
-  source "elasticsearch.yml.erb"
-  owner "root"
-  group "root"
-  mode 0644
-end
+#template "elasticsearch.yaml" do
+#  path "/etc/elasticsearch/elasticsearch.yml"
+#  source "elasticsearch.yml.erb"
+#  owner "root"
+#  group "root"
+#  mode 0644
+#end
 
 service "elasticsearch" do
   supports :status => true, :restart => true, :reload => true
@@ -36,16 +36,15 @@ script "install plugins" do
   interpreter "bash"
   user "root"
   code <<-EOL
-    for i in `/usr/share/elasticsearch/bin/plugin -l | grep '^    - ' | sed -e 's/^    -//'`
+    for i in `/usr/share/elasticsearch/bin/plugin list | grep '^    - ' | sed -e 's/^    -//'`
     do
-    /usr/share/elasticsearch/bin/plugin -remove $i
+    /usr/share/elasticsearch/bin/plugin remove $i
     done
 
-    /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/2.7.0
-    /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-kuromoji/2.7.0
-    /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
-    /usr/share/elasticsearch/bin/plugin -install royrusso/elasticsearch-HQ
-    /usr/share/elasticsearch/bin/plugin -install lukas-vlcek/bigdesk
+    /usr/share/elasticsearch/bin/plugin install cloud-aws
+    /usr/share/elasticsearch/bin/plugin install analysis-kuromoji
+    /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
+    /usr/share/elasticsearch/bin/plugin install royrusso/elasticsearch-HQ
   EOL
   notifies :restart, 'service[elasticsearch]'
 end
