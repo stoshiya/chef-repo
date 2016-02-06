@@ -19,9 +19,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
 
 ```
 $ sudo yum update -y
-$ sudo yum install -y ruby-devel gcc git
-$ sudo gem install knife-solo --no-ri --no-rdoc
-$ knife configure
+$ sudo yum install -y git
 ```
 
 ## run
@@ -35,6 +33,10 @@ $ sudo /usr/local/bin/chef-solo -c solo.rb -j COOKBOOK.json
 ## create new cookbook
 
 ```
+$ sudo yum install -y ruby-devel gcc
+$ sudo gem install knife-solo --no-ri --no-rdoc
+$ knife configure
+
 $ knife cookbook create NEW_COOKBOOK -o site-cookbooks
 $ vim site-cookbooks/NEW_COOKBOOK/recipes/default.rb
 $ vim NEW_COOKBOOK.json
