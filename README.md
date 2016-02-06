@@ -12,6 +12,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
  - nodebrew
  - node.js
  - redis
+ - stunnel
  - td-agent
  - yum
 
