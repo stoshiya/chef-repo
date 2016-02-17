@@ -23,7 +23,7 @@ end
 
 service "mongod" do
   supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
+  action [ :enable ]
 end
 
 template "mongod.conf" do
@@ -32,6 +32,6 @@ template "mongod.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :reload, 'service[mongod]'
+  notifies :start, 'service[mongod]'
 end
 
