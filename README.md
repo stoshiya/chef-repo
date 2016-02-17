@@ -28,7 +28,7 @@ $ sudo yum install -y git
 ```
 $ git clone https://github.com/stoshiya/chef-repo.git
 $ cd chef-repo
-$ sudo /usr/bin/chef-solo -c solo.rb -j COOKBOOK.json
+$ sudo chef-solo -c solo.rb -j nodes/COOKBOOK.json
 ```
 
 ## create new cookbook
@@ -40,6 +40,6 @@ $ knife configure
 
 $ knife cookbook create NEW_COOKBOOK -o site-cookbooks
 $ vim site-cookbooks/NEW_COOKBOOK/recipes/default.rb
-$ vim NEW_COOKBOOK.json
-$ sudo /usr/bin/chef-solo -c solo.rb -j NEW_COOKBOOK.json
+$ vim nodes/NEW_COOKBOOK.json
+$ sudo chef-solo -c solo.rb -j nodes/NEW_COOKBOOK.json
 ```
