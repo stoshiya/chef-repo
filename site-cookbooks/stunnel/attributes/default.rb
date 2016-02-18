@@ -1,0 +1,2 @@
+default['stunnel']['targets'] = []
+
