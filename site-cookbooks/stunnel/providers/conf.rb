@@ -10,7 +10,6 @@ action :create do
       :name => new_resource.name,
       :port => new_resource.port
     )
-    notifies :restart, "service[stunnel]"
   end
 
   execute "Add config to /etc/stunnel/stunnel.conf" do
