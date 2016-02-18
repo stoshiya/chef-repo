@@ -1,5 +1,5 @@
 action :create do
-  template "/etc/stunnel/conf.d/#{new_resource.name}.conf" do
+  template "/tmp/#{new_resource.name}.conf" do
     cookbook "stunnel"
     source "template.conf.erb"
     action :create
@@ -12,5 +12,11 @@ action :create do
     )
     notifies :restart, "service[stunnel]"
   end
-end
 
+  execute "Add config to /etc/stunnel/stunnel.conf" do
+    command "cat /tmp/#{new_resource.name}.conf >> /etc/stunnel/stunnel.conf"
+    only_if { File.exists?("/tmp/#{new_resource.name}.conf") }
+    notifies :delete,  "template[/tmp/#{new_resource.name}.conf]"
+    notifies :restart, "service[stunnel]"
+  end
+end
