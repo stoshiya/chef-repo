@@ -2,5 +2,8 @@
   "run_list" : [
     "recipe[yum]",
     "recipe[stunnel]"
-  ]
+  ],
+  "stunnel" : {
+    "targets" : [{ "name" : "example.com", "port": 1443 }]
+  }
 }

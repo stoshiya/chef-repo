@@ -7,9 +7,16 @@
 # All rights reserved - Do Not Redistribute
 #
 
+directory "/etc/stunnel" do
+  owner "root"
+  group "root"
+  mode "0755"
+  recursive true
+end
+
 template "/etc/rc.d/init.d/stunnel" do
   path "/etc/rc.d/init.d/stunnel"
-  source "stunnel.rb"
+  source "stunnel.erb"
   owner "root"
   group "root"
   mode "755"
@@ -17,10 +24,17 @@ end
 
 template "/etc/stunnel/stunnel.conf" do
   path "/etc/stunnel/stunnel.conf"
-  source "stunnel.conf.rb"
+  source "stunnel.conf.erb"
   owner "root"
   group "root"
   mode "644"
+end
+
+node['stunnel']['targets'].each do |target|
+  stunnel_conf "#{target.name}" do
+    action :create
+    port target.port
+  end
 end
 
 package "stunnel" do
