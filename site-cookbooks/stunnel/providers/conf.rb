@@ -1,5 +1,5 @@
 action :create do
-  template "/tmp/#{new_resource.name}.conf" do
+  template "#{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf" do
     cookbook "stunnel"
     source "template.conf.erb"
     action :create
@@ -13,9 +13,9 @@ action :create do
   end
 
   execute "Add config to /etc/stunnel/stunnel.conf" do
-    command "cat /tmp/#{new_resource.name}.conf >> /etc/stunnel/stunnel.conf"
-    only_if { File.exists?("/tmp/#{new_resource.name}.conf") }
-    notifies :delete,  "template[/tmp/#{new_resource.name}.conf]"
+    command "cat #{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf >> /etc/stunnel/stunnel.conf"
+    only_if { File.exists?("#{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf") }
+    notifies :delete,  "template[#{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf]"
     notifies :restart, "service[stunnel]"
   end
 end
