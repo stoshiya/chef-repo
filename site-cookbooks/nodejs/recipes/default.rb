@@ -21,11 +21,10 @@ script "extract" do
   EOL
 end
 
-link "/usr/local/bin/node" do
+link "/usr/bin/node" do
   to "/usr/local/node-#{version}-linux-x64/bin/node"
 end
 
-link "/usr/local/bin/npm" do
+link "/usr/bin/npm" do
   to "/usr/local/node-#{version}-linux-x64/bin/npm"
 end
-
