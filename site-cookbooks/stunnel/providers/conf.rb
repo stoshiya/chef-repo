@@ -14,7 +14,7 @@ action :create do
 
   execute "Add config to /etc/stunnel/stunnel.conf" do
     command "cat #{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf >> /etc/stunnel/stunnel.conf"
-    only_if { File.exists?("#{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf") }
+    only_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf") }
     notifies :delete,  "template[#{Chef::Config[:file_cache_path]}/#{new_resource.name}.conf]"
     notifies :restart, "service[stunnel]"
   end

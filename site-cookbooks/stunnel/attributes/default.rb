@@ -1,1 +1,1 @@
-default['stunnel']['targets'] = [{ "name" : "example.com", "port": 1443 }]
+default['stunnel']['targets'] = [{ :name => "example.com", :port => 1443 }]
