@@ -22,16 +22,15 @@ package "newrelic-sysmond" do
   action :install
 end
 
-service "newrelic-sysmond" do
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
-end
-
 script "configure" do
   interpreter "bash"
   user "root"
   code <<-EOL
     /usr/sbin/nrsysmond-config --set license_key=#{license_key}
   EOL
-  notifies :reload, 'service[newrelic-sysmond]'
+end
+
+service "newrelic-sysmond" do
+  supports :status => true, :restart => true, :reload => true
+  action [ :enable, :start ]
 end
