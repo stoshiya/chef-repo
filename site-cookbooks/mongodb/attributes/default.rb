@@ -1,0 +1,1 @@
+default['mongodb']['replSetName'] = nil

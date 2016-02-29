@@ -33,5 +33,7 @@ template "mongod.conf" do
   group "root"
   mode 0644
   notifies :start, 'service[mongod]'
+  variables(
+    :replSetName => node["mongodb"]["replSetName"]
+  )
 end
-
