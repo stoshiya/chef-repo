@@ -1,6 +1,6 @@
 # chef-repo
 
-Chef Solo Recipes for AWS EC2 Linux AMI.
+Chef Zero Recipes for AWS EC2 Linux AMI.
 
 
 ## recipes
@@ -30,7 +30,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
 
     $ git clone https://github.com/stoshiya/chef-repo.git
     $ cd chef-repo
-    $ sudo chef-solo -c solo.rb -j nodes/COOKBOOK.json
+    $ sudo chef-client -z -c client.rb -j nodes/COOKBOOK.json
 
 
 ## create new cookbook
@@ -38,4 +38,4 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
     $ knife cookbook create NEW_COOKBOOK -o site-cookbooks
     $ vim site-cookbooks/NEW_COOKBOOK/recipes/default.rb
     $ vim nodes/NEW_COOKBOOK.json
-    $ sudo chef-solo -c solo.rb -j nodes/NEW_COOKBOOK.json
+    $ sudo chef-client -z -c client.rb -j nodes/NEW_COOKBOOK.json
