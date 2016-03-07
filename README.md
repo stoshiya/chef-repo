@@ -7,6 +7,7 @@ Chef Solo Recipes for AWS EC2 Linux AMI.
 
  - elasticsearch
  - gobrew
+ - golang
  - mongodb
  - newrelic
  - nginx
