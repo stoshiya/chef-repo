@@ -35,8 +35,15 @@ script "plugin update and install" do
   EOL
 end
 
+template "td-agent.conf" do
+  path "/etc/td-agent/td-agent.conf"
+  source "td-agent.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+end
+
 service "td-agent" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
 end
-
