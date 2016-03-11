@@ -13,26 +13,30 @@
   end
 end
 
-remote_file "/tmp/install-redhat.sh" do
-  source "http://toolbelt.treasuredata.com/sh/install-redhat.sh"
+remote_file "/tmp/install-redhat-td-agent2.sh" do
+  source "https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh"
 end
 
 script "install" do
   interpreter "bash"
   user "root"
   code <<-EOL
-    sed -i -e 's/^sudo -k/#sudo -k/' -e 's/^sudo sh/sh/' /tmp/install-redhat.sh
-    sh /tmp/install-redhat.sh
+    sed -i -e 's/^sudo -k/#sudo -k/' -e 's/^sudo sh/sh/' /tmp/install-redhat-td-agent2.sh
+    sh /tmp/install-redhat-td-agent2.sh
   EOL
 end
 
-script "plugin update and install" do
+script "install plugin" do
   interpreter "bash"
   user "root"
   code <<-EOL
-    sudo /usr/lib64/fluent/ruby/bin/fluent-gem update --no-ri --no-rdoc
-    sudo /usr/lib64/fluent/ruby/bin/fluent-gem install fluent-plugin-forest --no-ri --no-rdoc
+    /opt/td-agent/usr/sbin/td-agent-gem install fluent-plugin-forest --no-ri --no-rdoc
   EOL
+end
+
+directory "/etc/td-agent/conf.d" do
+  owner "root"
+  mode  0755
 end
 
 template "td-agent.conf" do
