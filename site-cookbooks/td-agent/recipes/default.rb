@@ -36,6 +36,24 @@ template "td-agent.conf" do
   mode 0644
 end
 
+node['td-agent']['config'].each do |config|
+  template "#{config.dir}-#{config.name}.conf" do
+    path "/etc/td-agent/conf.d/#{config.dir}-#{config.name}.conf"
+    source "template.s3.conf.erb"
+    owner "root"
+    group "root"
+    mode 0644
+    variables(
+      :name =>        config.name,
+      :dir =>         config.dir,
+      :format =>      config.format,
+      :time_format => config.time_format,
+      :s3_bucket => node['td-agent']['s3_bucket'],
+      :s3_region => node['td-agent']['s3_region']
+    )
+  end
+end
+
 service "td-agent" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
