@@ -12,6 +12,6 @@
   format json
   s3_bucket <%= @s3_bucket %>
   s3_region <%= @s3_region %>
-  path <%= @dir %>/<%= @name %>/%Y/%m/%d/
+  path <%= @dir %>/<%= @name %>/%Y/
   buffer_path /var/log/td-agent/<%= @dir %>/<%= @name %>/
 </match>
