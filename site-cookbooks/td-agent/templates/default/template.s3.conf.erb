@@ -3,7 +3,7 @@
   path /var/log/<%= @dir %>/<%= @name %>
   pos_file /var/log/td-agent/<%= @dir %>/<%= @name %>.pos
   tag <%= @dir %>-<%= @name %>
-  format "/^(?<host>[^ ]*) [^ ]* (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^ ]*) +\\S*)?\" (?<code>[^ ]*) (?<size>[^ ]*) \"(?<referer>[^ ]*)\" \"(?<agent>[^\\\"]*)\" (?<latency>[^ ]*) \"(?<forwarded-for>[^\\\"]*)\" \"(?<forwarded-proto>[^\\\"]*)\" \"(?<personalId>[^\\\"]*)\"$/"
+  format /^(?<host>[^ ]*) [^ ]* (?<user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^ ]*) +\S*)?" (?<code>[^ ]*) (?<size>[^ ]*) "(?<referer>[^ ]*)" "(?<agent>[^\"]*)" (?<latency>[^ ]*) "(?<forwarded-for>[^\"]*)" "(?<forwarded-proto>[^\"]*)" "(?<personalId>[^\"]*)"$/
   time_format <%= @time_format %>
 </source>
 
