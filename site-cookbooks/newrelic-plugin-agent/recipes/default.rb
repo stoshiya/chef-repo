@@ -17,14 +17,21 @@ script "install" do
     chmod 0755 /etc/rc.d/init.d/newrelic-plugin-agent
   EOL
   not_if {File.exists?("/opt/newrelic-plugin-agent/newrelic-plugin-agent.rhel")}
-end.
+end
+
+directory "/etc/newrelic" do
+  owner "root"
+  group "root"
+  mode 0755
+  action :create
+end
 
 template "newrelic-plugin-agent.cfg" do
   path "/etc/newrelic/newrelic-plugin-agent.cfg"
   source "newrelic-plugin-agent.cfg.erb"
   owner "root"
-  group "root"
-  mode 0644
+  group "newrelic"
+  mode 0640
   variables(
       :license_key           => node['newrelic']['license_key'],
       :hostname              => node['hostname'],
