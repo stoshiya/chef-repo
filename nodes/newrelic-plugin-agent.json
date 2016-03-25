@@ -1,0 +1,11 @@
+{
+  "newrelic": {
+    "license_key": "paste your license key from account settings"
+  },
+  "newrelic-plugin-agent": {
+    "redis": true
+  },
+  "run_list": [
+    "recipe[newrelic-plugin-agent]"
+  ]
+}
