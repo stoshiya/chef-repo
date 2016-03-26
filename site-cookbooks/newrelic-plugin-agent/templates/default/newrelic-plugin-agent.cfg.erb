@@ -44,12 +44,12 @@ Application:
 
 <% if @mongodb then %>
   mongodb:
-    name: <%= @hostname %>
+    name: <%= @mongodb_name %>
     host: localhost
     port: 27017
     databases:
       - <%= @mongodb_database_name %>
-<% else %>
+<% end %>
   #mongodb:
   #  name: hostname
   #  host: localhost
@@ -64,7 +64,6 @@ Application:
   #  databases:
   #    - test
   #    - yourdbname
-<% end %>
 
   #mongodb:  # Use when authentication is required
   #  name: hostname
@@ -136,10 +135,10 @@ Application:
 
 <% if @redis then %>
   redis:
-    - name: <%= @hostname %>
+    - name: <%= @redis_name %>
       host: localhost
       port: 6379
-<% else %>
+<% end %>
   #redis:
   #  - name: localhost
   #    host: localhost
@@ -153,7 +152,6 @@ Application:
   #    db_count: 16
   #    password: foo # [OPTIONAL]
   #    #path: /var/run/redis/redis.sock
-<% end %>
 
   #riak:
   #  name: localhost

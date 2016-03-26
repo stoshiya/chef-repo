@@ -34,10 +34,11 @@ template "newrelic-plugin-agent.cfg" do
   mode 0640
   variables(
       :license_key           => node['newrelic']['license_key'],
-      :hostname              => node['hostname'],
       :mongodb               => node['newrelic-plugin-agent']['mongodb'],
+      :mongodb_name          => node['newrelic-plugin-agent']['mongodb_name'],
       :mongodb_database_name => node['newrelic-plugin-agent']['mongodb_database_name'],
-      :redis                 => node['newrelic-plugin-agent']['redis']
+      :redis                 => node['newrelic-plugin-agent']['redis'],
+      :redis_name            => node['newrelic-plugin-agent']['redis_name']
   )
 end
 
