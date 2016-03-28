@@ -20,16 +20,26 @@ package "redis" do
   options "--enablerepo=remi"
 end
 
-service "redis" do
-  supports :status => true, :restart => true
-  action [ :enable, :start ]
+["redis", "redis-sentinel"].each do |app|
+  service "#{app}" do
+    supports :status => true, :restart => true
+    action [ :enable, :start ]
+  end
 end
 
-template "redis.conf" do
-  path "/etc/redis.conf"
-  source "redis.conf.erb"
-  owner "redis"
-  group "root"
-  mode 0644
-  notifies :restart, 'service[redis]'
+["redis", "redis-sentinel"].each do |app|
+  template "#{app}.conf" do
+    path "/etc/#{app}.conf"
+    source "#{app}.conf.erb"
+    owner "redis"
+    group "root"
+    mode 0644
+    variables(
+        :is_slave    => node[:redis][:is_slave],
+        :masterip    => node[:redis][:masterip],
+        :masterport  => node[:redis][:masterport],
+        :master_name => node[:redis][:master_name]
+    )
+    notifies :restart, "service[#{app}]"
+  end
 end
