@@ -48,8 +48,9 @@ Application:
     host: localhost
     port: 27017
     databases:
-      - local
-      - <%= @mongodb_database_name %>
+  <% @mongodb_databases.each do |database_name| %>
+      - <%= database_name %>
+  <% end %>
 <% end %>
   #mongodb:
   #  name: hostname
