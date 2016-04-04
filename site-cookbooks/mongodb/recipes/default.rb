@@ -32,7 +32,8 @@ template "mongod.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :start, 'service[mongod]'
+  notifies :restart, 'service[mongod]'
+  notifies :restart, 'service[newrelic-plugin-agent]'
   variables(
     :replSetName => node["mongodb"]["replSetName"]
   )
