@@ -15,7 +15,7 @@ script "rpm" do
   EOL
 end
 
-package "#{app}" do
+package "redis" do
   action :install
   options "--enablerepo=remi"
 end
