@@ -1,15 +1,15 @@
 #
 # Cookbook Name:: redis
-# Recipe:: default
+# Recipe:: sentinel
 #
-# Copyright 2014, YOUR_COMPANY_NAME
+# Copyright 2016, YOUR_COMPANY_NAME
 #
 # All rights reserved - Do Not Redistribute
 #
 
 include_recipe "redis::install"
 
-app = "redis"
+app = "redis-sentinel"
 
 service "#{app}" do
   supports :status => true, :restart => true
@@ -23,9 +23,11 @@ template "#{app}.conf" do
   group "root"
   mode 0644
   variables(
-      :is_slave    => node[:redis][:is_slave],
-      :masterip    => node[:redis][:masterip],
-      :masterport  => node[:redis][:masterport]
+      :sentinel_port => node[:redis][:sentinel_port],
+      :masterip      => node[:redis][:masterip],
+      :masterport    => node[:redis][:masterport],
+      :master_name   => node[:redis][:master_name],
+      :quorum        => node[:redis][:quorum]
   )
   notifies :restart, "service[#{app}]"
 end

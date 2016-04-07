@@ -2,7 +2,7 @@
 
 # port <sentinel-port>
 # The port that this sentinel instance will run on
-port 26379
+port <%= @sentinel_port %>
 
 # Specify the log file name. Also the empty string can be used to force
 # Redis to log on the standard output. Note that if you use standard
@@ -55,7 +55,7 @@ dir /tmp
 #
 # Note: master name should not include special characters or spaces.
 # The valid charset is A-z 0-9 and the three characters ".-_".
-sentinel monitor <%= @master_name %> <%= @masterip %> <%= @masterport %> 2
+sentinel monitor <%= @master_name %> <%= @masterip %> <%= @masterport %> <%= @quorum %>
 
 # sentinel auth-pass <master-name> <password>
 #
