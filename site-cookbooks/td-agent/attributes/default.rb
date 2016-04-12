@@ -1,0 +1,1 @@
+default['td-agent']['config'] = []

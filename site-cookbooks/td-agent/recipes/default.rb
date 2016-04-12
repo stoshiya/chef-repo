@@ -44,9 +44,9 @@ node['td-agent']['config'].each do |config|
     group "root"
     mode 0644
     variables(
-      :name =>        config.name,
-      :dir =>         config.dir,
-      :format =>      config.format,
+      :name        => config.name,
+      :dir         => config.dir,
+      :format      => config.format,
       :time_format => config.time_format,
       :s3_bucket => node['td-agent']['s3_bucket'],
       :s3_region => node['td-agent']['s3_region']

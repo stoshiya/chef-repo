@@ -4,7 +4,9 @@
   pos_file /var/log/td-agent/<%= @dir %>/<%= @name %>.pos
   tag <%= @dir %>-<%= @name %>
   format <%= @format %>
+<% if @time_format != '' %>
   time_format <%= @time_format %>
+<% end %>
 </source>
 
 <match <%= @dir %>-<%= @name %>>
