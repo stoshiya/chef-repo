@@ -34,6 +34,8 @@ template "newrelic-plugin-agent.cfg" do
   mode 0640
   variables(
     :license_key       => node['newrelic']['license_key'],
+    :apache_httpd      => node['newrelic-plugin-agent']['apache_httpd'],
+    :apache_httpd_name => node['newrelic-plugin-agent']['apache_httpd_name'],
     :mongodb           => node['newrelic-plugin-agent']['mongodb'],
     :mongodb_name      => node['newrelic-plugin-agent']['mongodb_name'],
     :mongodb_databases => node['newrelic-plugin-agent']['mongodb_databases'],

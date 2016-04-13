@@ -6,6 +6,15 @@ Application:
   #newrelic_api_timeout: 10
   #proxy: http://localhost:8080
 
+<% if @apache_httpd %>
+  apache_httpd:
+    name: <%= @apache_httpd_name %>
+    scheme: http
+    host: localhost
+    verify_ssl_cert: false
+    port: 80
+    path: /server-status
+<% end %>
   #apache_httpd:
   #  name: hostname
   #  scheme: http
@@ -42,7 +51,7 @@ Application:
   #  port: 11211
   #  path: /path/to/unix/socket
 
-<% if @mongodb then %>
+<% if @mongodb %>
   mongodb:
     name: <%= @mongodb_name %>
     host: localhost
@@ -135,7 +144,7 @@ Application:
   #    staging_vhost: # [track every queue for this vhost]
   #
 
-<% if @redis then %>
+<% if @redis %>
   redis:
     - name: <%= @redis_name %>
       host: localhost
