@@ -9,7 +9,7 @@
 
 template "elasticsearch.repo" do
   path "/etc/yum.repos.d/elasticsearch.repo"
-  source "elasticsearch.repo.erb"
+  source "/etc/yum.repos.d/elasticsearch.repo.erb"
   owner "root"
   group "root"
   mode 0644
@@ -19,20 +19,26 @@ package "elasticsearch" do
   action :install
 end
 
-#template "elasticsearch.yaml" do
-#  path "/etc/elasticsearch/elasticsearch.yml"
-#  source "elasticsearch.yml.erb"
-#  owner "root"
-#  group "root"
-#  mode 0644
-#end
+template "/etc/sysconfig/elasticsearch" do
+  path "/etc/sysconfig/elasticsearch"
+  source "/etc/sysconfig/elasticsearch.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  variables(
+    :es_heap_size      => node['elasticsearch']['es_heap_size'],
+    :max_locked_memory => node['elasticsearch']['max_locked_memory'],
+    :max_open_files    => node['elasticsearch']['max_open_files']
+  )
+  notifies :restart, 'service[elasticsearch]'
+end
 
 service "elasticsearch" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
 end
 
-script "install plugins" do
+script "plugins" do
   interpreter "bash"
   user "root"
   code <<-EOL
@@ -41,10 +47,7 @@ script "install plugins" do
     /usr/share/elasticsearch/bin/plugin remove $i
     done
 
-    /usr/share/elasticsearch/bin/plugin install cloud-aws
     /usr/share/elasticsearch/bin/plugin install analysis-kuromoji
-    /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
-    /usr/share/elasticsearch/bin/plugin install royrusso/elasticsearch-HQ
   EOL
   notifies :restart, 'service[elasticsearch]'
 end
