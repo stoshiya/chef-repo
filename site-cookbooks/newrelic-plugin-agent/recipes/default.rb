@@ -33,14 +33,16 @@ template "newrelic-plugin-agent.cfg" do
   group "newrelic"
   mode 0640
   variables(
-    :license_key       => node['newrelic']['license_key'],
-    :apache_httpd      => node['newrelic-plugin-agent']['apache_httpd'],
-    :apache_httpd_name => node['newrelic-plugin-agent']['apache_httpd_name'],
-    :mongodb           => node['newrelic-plugin-agent']['mongodb'],
-    :mongodb_name      => node['newrelic-plugin-agent']['mongodb_name'],
-    :mongodb_databases => node['newrelic-plugin-agent']['mongodb_databases'],
-    :redis             => node['newrelic-plugin-agent']['redis'],
-    :redis_name        => node['newrelic-plugin-agent']['redis_name']
+    :license_key        => node['newrelic']['license_key'],
+    :apache_httpd       => node['newrelic-plugin-agent']['apache_httpd'],
+    :apache_httpd_name  => node['newrelic-plugin-agent']['apache_httpd_name'],
+    :mongodb            => node['newrelic-plugin-agent']['mongodb'],
+    :mongodb_name       => node['newrelic-plugin-agent']['mongodb_name'],
+    :mongodb_databases  => node['newrelic-plugin-agent']['mongodb_databases'],
+    :redis              => node['newrelic-plugin-agent']['redis'],
+    :redis_name         => node['newrelic-plugin-agent']['redis_name'],
+    :elasticsearch      => node['newrelic-plugin-agent']['elasticsearch'],
+    :elasticsearch_name => node['newrelic-plugin-agent']['elasticsearch_name']
   )
 end
 

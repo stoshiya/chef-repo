@@ -31,6 +31,13 @@ Application:
   #  username: foo
   #  password: bar
 
+<% if @elasticsearch %>
+  elasticsearch:
+    name: <%= @elasticsearch_name %>
+    host: localhost
+    port: 9200
+    scheme: http
+<% end %>
   #elasticsearch:
   #  name: Clustername
   #  host: localhost
