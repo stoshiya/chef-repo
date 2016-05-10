@@ -19,6 +19,18 @@ package "elasticsearch" do
   action :install
 end
 
+template "/etc/elasticsearch/elasticsearch.yml" do
+  path "/etc/elasticsearch/elasticsearch.yml"
+  source "/etc/elasticsearch/elasticsearch.yml.erb"
+  owner "root"
+  group "elasticsearch"
+  mode 0640
+  variables(
+    :network_host => node['elasticsearch']['network_host']
+  )
+  notifies :restart, 'service[elasticsearch]'
+end
+
 template "/etc/sysconfig/elasticsearch" do
   path "/etc/sysconfig/elasticsearch"
   source "/etc/sysconfig/elasticsearch.erb"
