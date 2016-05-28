@@ -47,12 +47,13 @@ node['td-agent']['logs'].each do |log|
       :dir         => log.dir,
       :format      => log.format,
       :time_format => log.time_format,
-      :s3                 => node['td-agent']['s3'],
-      :s3_bucket          => node['td-agent']['s3_bucket'],
-      :s3_region          => node['td-agent']['s3_region'],
-      :elasticsearch      => node['td-agent']['elasticsearch'],
-      :elasticsearch_host => node['td-agent']['elasticsearch_host'],
-      :elasticsearch_port => node['td-agent']['elasticsearch_port']
+      :s3        => node['td-agent']['s3'],
+      :s3_bucket => node['td-agent']['s3_bucket'],
+      :s3_region => node['td-agent']['s3_region'],
+      :elasticsearch              => node['td-agent']['elasticsearch'],
+      :elasticsearch_host         => node['td-agent']['elasticsearch_host'],
+      :elasticsearch_port         => node['td-agent']['elasticsearch_port'],
+      :elasticsearch_index_prefix => node['td-agent']['elasticsearch_index_prefix']
     )
   end
 end

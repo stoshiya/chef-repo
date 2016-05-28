@@ -28,11 +28,11 @@
 <% if @elasticsearch %>
   <store>
     @type elasticsearch
-    type_name <%= @name %>
+    type_name <%= @elasticsearch_index_prefix %><%= @name %>
     host <%= @elasticsearch_host %>
     port <%= @elasticsearch_port %>
     logstash_format true
-    logstash_prefix <%= @name %>
+    logstash_prefix <%= @elasticsearch_index_prefix %><%= @name %>
     include_tag_key true
     tag_key @log_name
     flush_interval 1m

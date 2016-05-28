@@ -5,3 +5,4 @@ default['td-agent']['s3_region'] = 'ap-northeast-1'
 default['td-agent']['elasticsearch'] = false
 default['td-agent']['elasticsearch_host'] = 'localhost'
 default['td-agent']['elasticsearch_port'] = 9200
+default['td-agent']['elasticsearch_index_prefix'] = ''
