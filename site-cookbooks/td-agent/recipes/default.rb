@@ -17,6 +17,7 @@ script "install" do
   code <<-EOL
     sh /tmp/install-redhat-td-agent2.sh
     /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch
+    /usr/sbin/td-agent-gem install fluent-plugin-ec2-metadata
   EOL
 end
 

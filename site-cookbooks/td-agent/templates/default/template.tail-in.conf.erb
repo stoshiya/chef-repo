@@ -9,6 +9,14 @@
 <% end %>
 </source>
 
+<filter <%= @dir %>-<%= @name %>>
+  type ec2_metadata
+
+  <record>
+    instance_id ${instance_id}
+  </record>
+</filter>
+
 <match <%= @dir %>-<%= @name %>>
   @type copy
 
