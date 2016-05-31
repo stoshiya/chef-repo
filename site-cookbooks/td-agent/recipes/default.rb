@@ -39,7 +39,7 @@ end
 node['td-agent']['logs'].each do |log|
   template "#{log.dir}-#{log.name}.conf" do
     path "/etc/td-agent/conf.d/#{log.dir}-#{log.name}.conf"
-    source "/etc/td-agent/conf.d/template.tail-in.conf.erb"
+    source "/etc/td-agent/conf.d/template.tail.conf.erb"
     owner "root"
     group "root"
     mode 0644
