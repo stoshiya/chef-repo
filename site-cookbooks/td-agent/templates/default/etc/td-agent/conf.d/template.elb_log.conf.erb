@@ -1,7 +1,7 @@
 <source>
   @type elb_log
   region            <%= @s3_region %>
-  s3_bucketname     <%= @s3_bucket %>
+  s3_bucketname     <%= @s3_bucketname %>
   s3_prefix         <%= @s3_prefix %>
   timestamp_file    /var/log/td-agent/<%= @name %>/elb_last_at.dat
   buf_file          /var/log/td-agent/<%= @name %>/buffer/elb_log.tmpfile
