@@ -17,6 +17,7 @@ script "install" do
   code <<-EOL
     sh /tmp/install-redhat-td-agent2.sh
     /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch
+    /usr/sbin/td-agent-gem install fluent-plugin-elb-log
     /usr/sbin/td-agent-gem install fluent-plugin-ec2-metadata
   EOL
 end
@@ -55,6 +56,24 @@ node['td-agent']['logs'].each do |log|
       :elasticsearch_host         => node['td-agent']['elasticsearch_host'],
       :elasticsearch_port         => node['td-agent']['elasticsearch_port'],
       :elasticsearch_index_prefix => node['td-agent']['elasticsearch_index_prefix']
+    )
+  end
+end
+
+node['td-agent']['elb_logs'].each do |elb|
+  template "#{elb.name}.conf" do
+    path "/etc/td-agent/conf.d/#{elb.name}-elb_log.conf"
+    source "/etc/td-agent/conf.d/template.elb_log.conf.erb"
+    owner "root"
+    group "root"
+    mode 0644
+    variables(
+      :name      => elb.name,
+      :s3_prefix => elb.s3_prefix,
+      :s3_bucket          => node['td-agent']['s3_bucket'],
+      :s3_region          => node['td-agent']['s3_region'],
+      :elasticsearch_host => node['td-agent']['elasticsearch_host'],
+      :elasticsearch_port => node['td-agent']['elasticsearch_port'],
     )
   end
 end

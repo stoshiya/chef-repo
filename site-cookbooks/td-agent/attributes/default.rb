@@ -1,4 +1,5 @@
 default['td-agent']['logs'] = []
+default['td-agent']['elb_logs'] = []
 default['td-agent']['s3'] = false
 default['td-agent']['s3_bucket'] = 'bucket name'
 default['td-agent']['s3_region'] = 'ap-northeast-1'
