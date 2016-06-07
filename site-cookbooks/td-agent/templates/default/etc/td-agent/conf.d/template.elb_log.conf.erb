@@ -3,8 +3,8 @@
   region            <%= @s3_region %>
   s3_bucketname     <%= @s3_bucketname %>
   s3_prefix         <%= @s3_prefix %>
-  timestamp_file    /var/log/td-agent/<%= @name %>/elb_last_at.dat
-  buf_file          /var/log/td-agent/<%= @name %>/buffer/elb_log.tmpfile
+  timestamp_file    /var/log/td-agent/<%= @name %>-elb_last_at.dat
+  buf_file          /var/log/td-agent/buffer/<%= @name %>-elb_log.tmpfile
   refresh_interval  3600
   tag               <%= @name %>-elb_log
 </source>
