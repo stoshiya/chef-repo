@@ -55,7 +55,7 @@ node['td-agent']['logs'].each do |log|
       :elasticsearch              => node['td-agent']['elasticsearch'],
       :elasticsearch_host         => node['td-agent']['elasticsearch_host'],
       :elasticsearch_port         => node['td-agent']['elasticsearch_port'],
-      :elasticsearch_index_prefix => node['td-agent']['elasticsearch_index_prefix']
+      :elasticsearch_index_prefix => node['td-agent']['elasticsearch_index_prefix'],
     )
   end
 end
@@ -71,9 +71,11 @@ node['td-agent']['elb_logs'].each do |elb|
       :name          => elb.name,
       :s3_bucketname => elb.s3_bucketname,
       :s3_prefix     => elb.s3_prefix,
-      :s3_region          => node['td-agent']['s3_region'],
-      :elasticsearch_host => node['td-agent']['elasticsearch_host'],
-      :elasticsearch_port => node['td-agent']['elasticsearch_port'],
+      :s3_region             => node['td-agent']['s3_region'],
+      :elasticsearch_host    => node['td-agent']['elasticsearch_host'],
+      :elasticsearch_port    => node['td-agent']['elasticsearch_port'],
+      :aws_access_key_id     => node['td-agent']['aws_access_key_id'],
+      :aws_secret_access_key => node['td-agent']['aws_secret_access_key'],
     )
   end
 end

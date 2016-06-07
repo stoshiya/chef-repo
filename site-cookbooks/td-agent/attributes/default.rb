@@ -7,3 +7,5 @@ default['td-agent']['elasticsearch'] = false
 default['td-agent']['elasticsearch_host'] = 'localhost'
 default['td-agent']['elasticsearch_port'] = 9200
 default['td-agent']['elasticsearch_index_prefix'] = ''
+default['td-agent']['aws_access_key_id'] = nil
+default['td-agent']['aws_secret_access_key'] = nil
