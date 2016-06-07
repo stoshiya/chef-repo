@@ -68,9 +68,9 @@ node['td-agent']['elb_logs'].each do |elb|
     group "root"
     mode 0644
     variables(
-      :name      => elb.name,
-      :s3_bucket => elb.s3_bucketname,
-      :s3_prefix => elb.s3_prefix,
+      :name          => elb.name,
+      :s3_bucketname => elb.s3_bucketname,
+      :s3_prefix     => elb.s3_prefix,
       :s3_region          => node['td-agent']['s3_region'],
       :elasticsearch_host => node['td-agent']['elasticsearch_host'],
       :elasticsearch_port => node['td-agent']['elasticsearch_port'],
