@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-template "kibana.repo" do
+template "/etc/yum.repos.d/kibana.repo" do
   path "/etc/yum.repos.d/kibana.repo"
   source "/etc/yum.repos.d/kibana.repo.erb"
   owner "root"
@@ -42,7 +42,7 @@ script "plugins" do
   code <<-EOL
     for i in `/opt/kibana/bin/kibana plugin --list`
     do
-    /opt/kinaba/bin/kibana plugin --remove $i
+    /opt/kibana/bin/kibana plugin --remove $i
     done
 
     /opt/kibana/bin/kibana plugin --install elastic/sense

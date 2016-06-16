@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-template "elasticsearch.repo" do
+template "/etc/yum.repos.d/elasticsearch.repo" do
   path "/etc/yum.repos.d/elasticsearch.repo"
   source "/etc/yum.repos.d/elasticsearch.repo.erb"
   owner "root"
