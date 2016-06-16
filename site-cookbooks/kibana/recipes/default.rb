@@ -24,6 +24,12 @@ service "kibana" do
   action [ :enable, :start ]
 end
 
+file "/opt/kibana/optimize/.babelcache.json" do
+  owner "kibana"
+  action :create
+  notifies :restart, 'service[kibana]'
+end
+
 template "/opt/kibana/config/kibana.yml" do
   path "/opt/kibana/config/kibana.yml"
   source "/opt/kibana/config/kibana.yml.erb"
