@@ -33,7 +33,7 @@ template "/opt/kibana/config/kibana.yml" do
   variables(
     :elasticsearch_url => node['kibana']['elasticsearch_url']
   )
-  notifies :restart, 'service[elasticsearch]'
+  notifies :restart, 'service[kibana]'
 end
 
 script "plugins" do
@@ -47,5 +47,5 @@ script "plugins" do
 
     /opt/kibana/bin/kibana plugin --install elastic/sense
   EOL
-  notifies :restart, 'service[elasticsearch]'
+  notifies :restart, 'service[kibana]'
 end
