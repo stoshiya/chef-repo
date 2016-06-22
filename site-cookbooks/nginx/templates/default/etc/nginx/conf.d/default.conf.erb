@@ -1,6 +1,6 @@
 upstream apps {
     least_conn;
-    server 127.0.0.1:3000;
+    server <%= @upstream_server %>
     keepalive 1000;
 }
 
@@ -21,7 +21,7 @@ server {
         proxy_set_header X-Forwarded-Server $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";        
+        proxy_set_header Connection "upgrade";
     }
 
     #error_page  404              /404.html;
