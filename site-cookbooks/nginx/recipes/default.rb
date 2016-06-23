@@ -33,6 +33,8 @@ template "/etc/nginx/conf.d/default.conf" do
   group "root"
   mode 0644
   variables(
+    :upstream        => node['nginx']['upstream'],
+    :upstream_name   => node['nginx']['upstream_name'],
     :upstream_server => node['nginx']['upstream_server']
   )
   notifies :reload, 'service[nginx]'
