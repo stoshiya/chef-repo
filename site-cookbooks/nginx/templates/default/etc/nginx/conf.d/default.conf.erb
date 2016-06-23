@@ -1,6 +1,6 @@
 upstream apps {
     least_conn;
-    server <%= @upstream_server %>
+    server <%= @upstream_server %>;
     keepalive 1000;
 }
 
