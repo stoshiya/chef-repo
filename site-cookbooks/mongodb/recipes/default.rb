@@ -36,3 +36,16 @@ template "/etc/mongod.conf" do
     :replSetName => node["mongodb"]["replSetName"]
   )
 end
+
+template "/etc/rc.d/init.d/disable-transparent-hugepage" do
+  path "/etc/rc.d/init.d/disable-transparent-hugepage"
+  source "/etc/rc.d/init.d/disable-transparent-hugepage.erb"
+  owner "root"
+  group "root"
+  mode 0755
+  notifies :restart, 'service[mongod]'
+end
+
+service "disable-transparent-hugepage" do
+  action [ :enable ]
+end
