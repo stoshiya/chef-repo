@@ -7,18 +7,16 @@
 # All rights reserved - Do Not Redistribute
 #
 
-template "mongodb.repo" do
+template "/etc/yum.repos.d/mongodb.repo" do
   path "/etc/yum.repos.d/mongodb.repo"
-  source "mongodb.repo.erb"
+  source "/etc/yum.repos.d/mongodb.repo.erb"
   owner "root"
   group "root"
   mode 0644
 end
 
-[ "mongodb-org", "mongodb-org-mongos", "mongodb-org-server", "mongodb-org-shell", "mongodb-org-tools" ].each do |p|
-  package p do
-    action :install
-  end
+package "mongodb-org" do
+  action :install
 end
 
 service "mongod" do
@@ -26,9 +24,9 @@ service "mongod" do
   action [ :enable ]
 end
 
-template "mongod.conf" do
+template "/etc/mongod.conf" do
   path "/etc/mongod.conf"
-  source "mongod.conf.erb"
+  source "/etc/mongod.conf.erb"
   owner "root"
   group "root"
   mode 0644
