@@ -1,0 +1,4 @@
+check process <%= @name %>
+  with pidfile "<%= @pidfile %>"
+  start program "/etc/rc.d/init.d/<%= @name %> start"
+  stop program "/etc/rc.d/init.d/<%= @name %> stop"
