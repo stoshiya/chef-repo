@@ -1,6 +1,7 @@
 /.idea
 .vagrant
 /cookbooks
+/.chef/syntaxcache
 
 # Bundler
 bin/*
