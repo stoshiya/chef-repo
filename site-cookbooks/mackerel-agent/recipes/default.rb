@@ -21,7 +21,7 @@ end
 
 service "mackerel-agent" do
   supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
+  action [ :enable ]
 end
 
 template "/etc/mackerel-agent/mackerel-agent.conf" do
@@ -34,5 +34,5 @@ template "/etc/mackerel-agent/mackerel-agent.conf" do
     :apikey => node['mackerel-agent']['apikey'],
     :roles  => node['mackerel-agent']['roles']
   )
-  notifies :reload, 'service[mackerel-agent]'
+  notifies :start, 'service[mackerel-agent]'
 end
