@@ -9,6 +9,7 @@ Chef Zero Recipes for AWS EC2 Linux AMI.
  - gobrew
  - golang
  - kibana
+ - mackerel-agent
  - mongodb
  - monit
  - newrelic
