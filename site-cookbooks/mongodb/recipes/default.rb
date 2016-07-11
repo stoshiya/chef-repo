@@ -37,15 +37,15 @@ template "/etc/mongod.conf" do
   )
 end
 
-template "/etc/rc.d/init.d/disable-transparent-hugepage" do
-  path "/etc/rc.d/init.d/disable-transparent-hugepage"
-  source "/etc/rc.d/init.d/disable-transparent-hugepage.erb"
+template "/etc/rc.d/init.d/disable-transparent-hugepages" do
+  path "/etc/rc.d/init.d/disable-transparent-hugepages"
+  source "/etc/rc.d/init.d/disable-transparent-hugepages.erb"
   owner "root"
   group "root"
   mode 0755
   notifies :restart, 'service[mongod]'
 end
 
-service "disable-transparent-hugepage" do
-  action [ :enable ]
+service "disable-transparent-hugepages" do
+  action [ :enable, :start ]
 end
