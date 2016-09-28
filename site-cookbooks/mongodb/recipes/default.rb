@@ -21,7 +21,7 @@ end
 
 service "mongod" do
   supports :status => true, :restart => true, :reload => true
-  action [ :enable ]
+  action [ :enable, :start ]
 end
 
 template "/etc/mongod.conf" do
