@@ -18,7 +18,7 @@ end
 
 template "#{app}.conf" do
   path "/etc/#{app}.conf"
-  source "#{app}.conf.erb"
+  source "/etc/#{app}.conf.erb"
   owner "redis"
   group "root"
   mode 0644
