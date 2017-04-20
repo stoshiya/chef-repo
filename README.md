@@ -43,3 +43,8 @@ Chef Zero Recipes for AWS EC2 Linux AMI.
     $ vim site-cookbooks/NEW_COOKBOOK/recipes/default.rb
     $ vim nodes/NEW_COOKBOOK.json
     $ sudo chef-client -z -c client.rb -j nodes/NEW_COOKBOOK.json
+
+
+## License
+
+[MIT](https://stoshiya.mit-license.org/2014)
