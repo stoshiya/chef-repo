@@ -1,11 +1,11 @@
-newrelic CHANGELOG
+newrelic-infra CHANGELOG
 ==================
 
-This file is used to list changes made in each version of the newrelic cookbook.
+This file is used to list changes made in each version of the  cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of newrelic
+- [your_name] - Initial release of 
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

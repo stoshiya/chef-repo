@@ -1,6 +1,6 @@
 # chef-repo
 
-Chef Zero Recipes for AWS EC2 Linux AMI.
+Chef Zero Recipes for Amazon Linux 2 AMI
 
 
 ## recipes
@@ -12,8 +12,7 @@ Chef Zero Recipes for AWS EC2 Linux AMI.
  - mackerel-agent
  - mongodb
  - monit
- - newrelic
- - newrelic-plugin-agent
+ - newrelic-infra
  - nginx
  - nodebrew
  - node.js

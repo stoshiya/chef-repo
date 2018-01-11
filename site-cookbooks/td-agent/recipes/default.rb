@@ -7,18 +7,18 @@
 # All rights reserved - Do Not Redistribute
 #
 
-remote_file "/tmp/install-redhat-td-agent2.sh" do
-  source "https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh"
+remote_file "/tmp/install-amazon2-td-agent3.sh" do
+  source "https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh"
 end
 
 script "install" do
   interpreter "bash"
   user "root"
   code <<-EOL
-    sh /tmp/install-redhat-td-agent2.sh
+    sh /tmp/install-amazon2-td-agent3.sh
     /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch
     /usr/sbin/td-agent-gem install fluent-plugin-elb-log
-    /usr/sbin/td-agent-gem install fluent-plugin-ec2-metadata -v 0.0.15
+    /usr/sbin/td-agent-gem install fluent-plugin-ec2-metadata
   EOL
 end
 
