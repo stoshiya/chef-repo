@@ -58,6 +58,13 @@ node['td-agent']['logs'].each do |log|
       :elasticsearch_index_prefix => node['td-agent']['elasticsearch_index_prefix'],
     )
   end
+
+  directory "/var/log/td-agent/#{log.dir}" do
+    owner "td-agent"
+    group "td-agent"
+    mode 0755
+    recursive true
+  end
 end
 
 node['td-agent']['elb_logs'].each do |elb|
